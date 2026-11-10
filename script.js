@@ -116,6 +116,46 @@ buildNavigation(
 );
 
 /* =========================================
+   EXPANDABLE HAMBURGER DROPDOWN
+   NEW ADDITION
+========================================= */
+
+const menuGroups = document.querySelectorAll(
+  "#menuNavigation .navigation-group"
+);
+
+menuGroups.forEach(group => {
+  const headingLink = group.querySelector("h3 a");
+
+  if (!headingLink) return;
+
+  headingLink.setAttribute("aria-expanded", "false");
+
+  headingLink.addEventListener("click", event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const wasExpanded =
+      group.classList.contains("expanded");
+
+    menuGroups.forEach(otherGroup => {
+      otherGroup.classList.remove("expanded");
+
+      const link = otherGroup.querySelector("h3 a");
+
+      if (link) {
+        link.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    if (!wasExpanded) {
+      group.classList.add("expanded");
+      headingLink.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+/* =========================================
    HAMBURGER MENU
 ========================================= */
 
