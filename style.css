@@ -1,0 +1,59 @@
+
+/* ULTIM8 WEBSITE — GRID FOUNDATION */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111111;
+}
+
+/* Header */
+.site-header {
+  padding: 24px 5%;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Main content area */
+main {
+  width: 90%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+/* Three-column grid */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(100px, auto));
+  gap: 16px;
+}
+
+/* Temporary visible grid cells */
+.grid-cell {
+  border: 1px solid #F26522;
+  background: #fff1e8;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Tablet and mobile layout */
+@media (max-width: 768px) {
+  .brand-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  main {
+    width: 90%;
+    padding: 24px 0;
+  }
+}
