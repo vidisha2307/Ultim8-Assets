@@ -197,8 +197,8 @@ img {
   padding: 60px var(--page-margin) 90px;
 }
 
-.navigation-panel.open {
-  display: block;
+.navigation-panel {
+  top: 108px;
 }
 
 .navigation-grid {
