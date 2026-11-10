@@ -498,13 +498,13 @@ img {
    FOOTER
 ========================================= */
 
-.site-footer {
-  background: #F26522;
-  padding-block: 85px 60px;
-  border-top: 1px solid #E8E8E8;
-}
+
+/* FOOTER LAYOUT — MATCHING YOUR SKETCH */
 
 .footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(5, minmax(0, 1fr));
+  column-gap: 24px;
   align-items: start;
 }
 
@@ -512,51 +512,25 @@ img {
   grid-column: 1;
 }
 
-
-/* FOOTER — STACKED LOGO */
-
-.footer-logo-link {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.footer-logo {
-  display: block;
-  width: 180px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 25px;
-}
-
-}
-
-.footer-download {
-  display: inline-block;
-  font-size: 14px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
 .footer-navigation {
-  grid-column: 2 / 4;
+  grid-column: 2 / 7;
 
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 15px;
+  column-gap: 24px;
+  align-items: start;
 }
+
+/* FOOTER SECTION HEADINGS */
 
 .footer-group h3 {
+  margin: 0 0 18px;
   font-size: 12px;
-  line-height: 1.3;
   font-weight: 800;
-  margin: 0 0 16px;
+  line-height: 1.35;
 }
 
-.footer-group h3 a,
-.footer-group li a {
-  text-decoration: none;
-}
+/* FOOTER SUBSECTION LINKS */
 
 .footer-group ul {
   list-style: none;
@@ -565,16 +539,32 @@ img {
 }
 
 .footer-group li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-group li a {
   font-size: 11px;
   line-height: 1.5;
+  text-decoration: none;
 }
 
-.footer-group a:hover {
-  color: var(--orange);
+/* MOBILE FOOTER */
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .footer-brand,
+  .footer-navigation {
+    grid-column: 1;
+  }
+
+  .footer-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+  }
 }
 
 /* =========================================
