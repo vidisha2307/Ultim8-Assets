@@ -499,7 +499,20 @@ img {
 ========================================= */
 
 
-/* FOOTER LAYOUT — MATCHING YOUR SKETCH */
+
+/* =========================================
+   ULTIM8 FOOTER — FINAL LAYOUT
+========================================= */
+
+.site-footer {
+  background-color: #F26522;
+  color: #000000;
+  padding: 70px 0 60px;
+  border: none;
+}
+
+/* Six columns:
+   1 for logo + 5 for navigation */
 
 .footer-grid {
   display: grid;
@@ -508,12 +521,45 @@ img {
   align-items: start;
 }
 
+/* LEFT: STACKED LOGO */
+
 .footer-brand {
   grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+.footer-logo-link {
+  display: block;
+  text-decoration: none;
+}
+
+.footer-logo {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 0 35px;
+}
+
+/* DOWNLOAD LINK */
+
+.footer-download {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* FIVE NAVIGATION COLUMNS */
+
 .footer-navigation {
-  grid-column: 2 / 7;
+  grid-column: 2 / -1;
 
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -521,16 +567,21 @@ img {
   align-items: start;
 }
 
-/* FOOTER SECTION HEADINGS */
+/* SECTION HEADINGS */
 
 .footer-group h3 {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   font-size: 12px;
   font-weight: 800;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
-/* FOOTER SUBSECTION LINKS */
+.footer-group h3 a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* SUBSECTION LINKS */
 
 .footer-group ul {
   list-style: none;
@@ -539,21 +590,31 @@ img {
 }
 
 .footer-group li {
-  margin-bottom: 12px;
+  margin: 0 0 12px;
 }
 
 .footer-group li a {
+  display: block;
+  color: #000000;
   font-size: 11px;
+  font-weight: 400;
   line-height: 1.5;
   text-decoration: none;
 }
 
-/* MOBILE FOOTER */
+/* HOVER EFFECT */
 
-@media (max-width: 768px) {
+.footer-group a:hover,
+.footer-download:hover {
+  color: #FFFFFF;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    row-gap: 40px;
+    row-gap: 45px;
   }
 
   .footer-brand,
@@ -562,10 +623,29 @@ img {
   }
 
   .footer-navigation {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px;
   }
 }
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .footer-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+}
+
 
 /* =========================================
    GUIDELINES PAGE
