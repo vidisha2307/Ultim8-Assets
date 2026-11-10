@@ -1,173 +1,249 @@
 
+/* =========================================
+   ULTIM8 WEBSITE JAVASCRIPT
+========================================= */
+
+/* FIVE MAIN GUIDELINE SECTIONS */
+
 const sections = [
   {
     title: "Brand Overview",
+    id: "brand-overview",
     topics: [
-      ["about-us", "About Us"],
-      ["why", "Why"],
-      ["substance", "Substance: Vision, Mission, Value & Purpose"],
-      ["products-services", "Products & Services"],
-      ["positioning", "Positioning"],
-      ["personality", "Personality"],
-      ["voice", "Voice"]
+      ["About Us", "about-us"],
+      ["Why", "why"],
+      ["Substance: Vision, Mission, Value & Purpose", "substance"],
+      ["Products & Services", "products-services"],
+      ["Positioning", "positioning"],
+      ["Personality", "personality"],
+      ["Voice", "voice"]
     ]
   },
   {
     title: "Primary Visual Identity",
+    id: "primary-visual-identity",
     topics: [
-      ["primary-logo", "Primary Logo"],
-      ["dos-donts", "Do's & Don'ts"],
-      ["logo-mark", "Logo Mark"],
-      ["variations", "Variations"],
-      ["typography", "Typography"],
-      ["color", "Color"]
+      ["Primary Logo", "primary-logo"],
+      ["Do’s & Don’ts", "dos-donts"],
+      ["Logo Mark", "logo-mark"],
+      ["Variations", "variations"],
+      ["Typography", "typography"],
+      ["Color", "color"]
     ]
   },
   {
     title: "Secondary Visual Identity",
+    id: "secondary-visual-identity",
     topics: [
-      ["pattern", "Pattern"],
-      ["icons-graphics", "Icons & Graphics"],
-      ["layout-grid", "Layout & Grid System"],
-      ["image-usage", "Image Usage Direction"],
-      ["asset-application", "Asset Application"]
+      ["Pattern", "pattern"],
+      ["Icons & Graphics", "icons-graphics"],
+      ["Layout & Grid System", "layout-grid"],
+      ["Image Usage Direction", "image-usage"],
+      ["Asset Application", "asset-application"]
     ]
   },
   {
     title: "Experiential Guide",
+    id: "experiential-guide",
     topics: [
-      ["different-media", "Different Media"],
-      ["identity-expansion", "Identity Expansion"],
-      ["sensory-application", "Sensory Application"],
-      ["visual-application", "Visual Application"]
+      ["Different Media", "different-media"],
+      ["Identity Expansion", "identity-expansion"],
+      ["Sensory Application", "sensory-application"],
+      ["Visual Application", "visual-application"]
     ]
   },
   {
     title: "AI Prompt",
+    id: "ai-prompt",
     topics: [
-      ["ai-tools", "AI Tools & Usage"],
-      ["design-prompts", "Design Prompts"],
-      ["visual-language", "Visual Language"],
-      ["terminology", "Terminology"],
-      ["ai-checklist", "AI Checklist"]
+      ["AI Tools & Usage", "ai-tools"],
+      ["Design Prompts", "design-prompts"],
+      ["Visual Language", "visual-language"],
+      ["Terminology", "terminology"],
+      ["AI Checklist", "ai-checklist"]
     ]
   }
 ];
 
-const menu = document.querySelector(".site-menu");
-const footer = document.querySelector(".footer-navigation");
-const button = document.querySelector(".menu-button");
+/* =========================================
+   NAVIGATION
+========================================= */
 
-if (menu) {
-  const home = document.createElement("a");
-  home.href = "index.html";
-  home.textContent = "Home";
-  menu.appendChild(home);
+function buildNavigation(container, groupClass) {
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  sections.forEach(section => {
+    const group = document.createElement("div");
+    group.className = groupClass;
+
+    const heading = document.createElement("h3");
+    const headingLink = document.createElement("a");
+
+    headingLink.href = "guidelines.html#" + section.id;
+    headingLink.textContent = section.title;
+
+    heading.appendChild(headingLink);
+    group.appendChild(heading);
+
+    const list = document.createElement("ul");
+
+    section.topics.forEach(topic => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+
+      link.href = "guidelines.html#" + topic[1];
+      link.textContent = topic[0];
+
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    group.appendChild(list);
+    container.appendChild(group);
+  });
 }
 
-sections.forEach((section, index) => {
-  const heading =
-    String(index + 1).padStart(2, "0") +
-    " — " + section.title;
+buildNavigation(
+  document.getElementById("menuNavigation"),
+  "navigation-group"
+);
 
-  if (menu) {
-    const details = document.createElement("details");
-    const summary = document.createElement("summary");
-    summary.textContent = heading;
-    details.appendChild(summary);
+buildNavigation(
+  document.getElementById("footerNavigation"),
+  "footer-group"
+);
 
-    section.topics.forEach(([id, name]) => {
-      const link = document.createElement("a");
-      link.href = "guidelines.html#" + id;
-      link.textContent = name;
-      details.appendChild(link);
-    });
+/* =========================================
+   HAMBURGER MENU
+========================================= */
 
-    menu.appendChild(details);
-  }
+const menuButton = document.getElementById("menuButton");
+const navigationPanel = document.getElementById("navigationPanel");
 
-  if (footer) {
-    const group = document.createElement("div");
-    const title = document.createElement("h3");
-    title.textContent = heading;
-    group.appendChild(title);
+function closeMenu() {
+  if (!menuButton || !navigationPanel) return;
 
-    section.topics.forEach(([id, name]) => {
-      const link = document.createElement("a");
-      link.href = "guidelines.html#" + id;
-      link.textContent = name;
-      group.appendChild(link);
-    });
+  navigationPanel.classList.remove("open");
+  menuButton.classList.remove("active");
 
-    footer.appendChild(group);
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open navigation");
+
+  document.body.classList.remove("menu-open");
+}
+
+function toggleMenu() {
+  if (!menuButton || !navigationPanel) return;
+
+  const isOpen = navigationPanel.classList.toggle("open");
+
+  menuButton.classList.toggle("active", isOpen);
+
+  menuButton.setAttribute(
+    "aria-expanded",
+    String(isOpen)
+  );
+
+  menuButton.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation" : "Open navigation"
+  );
+
+  document.body.classList.toggle("menu-open", isOpen);
+}
+
+if (menuButton) {
+  menuButton.addEventListener("click", toggleMenu);
+}
+
+if (navigationPanel) {
+  navigationPanel.addEventListener("click", event => {
+    if (event.target.closest("a")) {
+      closeMenu();
+    }
+  });
+}
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeMenu();
   }
 });
 
-if (button && menu) {
-  button.addEventListener("click", () => {
-    const open = menu.hidden;
-    menu.hidden = !open;
-    button.setAttribute("aria-expanded", String(open));
-    button.setAttribute(
-      "aria-label",
-      open ? "Close menu" : "Open menu"
-    );
-  });
+/* =========================================
+   GUIDELINES PAGE CONTENT STRUCTURE
+========================================= */
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && !menu.hidden) {
-      menu.hidden = true;
-      button.setAttribute("aria-expanded", "false");
-      button.focus();
-    }
-  });
-}
+const guidelinesContainer =
+  document.getElementById("guidelinesContainer");
 
-/* Populate separate guidelines page */
-const guideContent = document.querySelector("#guide-content");
+if (guidelinesContainer) {
+  sections.forEach(section => {
+    const sectionElement = document.createElement("section");
 
-if (guideContent) {
-  sections.forEach((section, index) => {
-    const group = document.createElement("section");
-    group.className = "guide-group grid-shell";
+    sectionElement.className = "guideline-section";
+    sectionElement.id = section.id;
 
-    const guides = document.createElement("div");
-    guides.className = "grid-guides";
-    guides.setAttribute("aria-hidden", "true");
-    guides.innerHTML = "<span></span><span></span><span></span>";
-    group.appendChild(guides);
+    const sectionHeading = document.createElement("h2");
+    sectionHeading.textContent = section.title;
 
-    const heading = document.createElement("h2");
-    heading.className = "guide-heading";
-    heading.textContent =
-      String(index + 1).padStart(2, "0") +
-      " — " + section.title;
-    group.appendChild(heading);
+    sectionElement.appendChild(sectionHeading);
 
-    section.topics.forEach(([id, name]) => {
+    section.topics.forEach(topic => {
       const article = document.createElement("article");
-      article.className = "guide-topic";
-      article.id = id;
 
-      const title = document.createElement("h3");
-      title.textContent = name;
+      article.className = "guideline-topic";
+      article.id = topic[1];
 
-      const body = document.createElement("div");
-      body.className = "topic-body";
-      body.textContent = "Content to be added.";
+      const topicHeading = document.createElement("h3");
+      topicHeading.textContent = topic[0];
 
-      article.append(title, body);
-      group.appendChild(article);
+      article.appendChild(topicHeading);
+      sectionElement.appendChild(article);
     });
 
-    guideContent.appendChild(group);
+    guidelinesContainer.appendChild(sectionElement);
   });
 
-  if (location.hash) {
-    const id = decodeURIComponent(location.hash.slice(1));
+  /* Scroll to the correct topic after
+     dynamically creating the sections. */
+
+  function scrollToGuideline() {
+    const id = decodeURIComponent(
+      window.location.hash.substring(1)
+    );
+
+    if (!id) return;
+
     const target = document.getElementById(id);
+
     if (target) {
-      requestAnimationFrame(() => target.scrollIntoView());
+      target.scrollIntoView({ behavior: "instant" });
     }
   }
+
+  scrollToGuideline();
+
+  window.addEventListener(
+    "hashchange",
+    scrollToGuideline
+  );
+}
+
+/* =========================================
+   DOWNLOAD PLACEHOLDER
+========================================= */
+
+const downloadLink = document.getElementById("downloadLink");
+
+if (downloadLink) {
+  downloadLink.addEventListener("click", event => {
+    event.preventDefault();
+
+    alert(
+      "The ULTIM8 brand assets download is coming soon."
+    );
+  });
 }
