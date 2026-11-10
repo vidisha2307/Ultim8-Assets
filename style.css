@@ -804,26 +804,31 @@ img {
 
 
 /* =========================================
-   ULTIM8 FOOTER — FINAL APPROVED DESIGN
+   ULTIM8 FOOTER — FINAL LAYOUT
 ========================================= */
 
 .site-footer {
-  background-color: #F26522;
+  background: #F26522;
   color: #000000;
   padding: 70px 0 60px;
-  border: none;
 }
 
-/* LOGO + FIVE NAVIGATION SECTIONS */
+/* TWO MAIN AREAS:
+   LEFT = LOGO
+   RIGHT = FIVE SECTIONS */
 
 .site-footer .footer-grid {
+  width: calc(100% - 80px);
+  max-width: 1600px;
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: 1.5fr repeat(5, minmax(0, 1fr));
-  column-gap: 24px;
+  grid-template-columns: 22% minmax(0, 1fr);
+  column-gap: 40px;
   align-items: start;
 }
 
-/* LEFT — STACKED LOGO */
+/* LEFT SIDE */
 
 .site-footer .footer-brand {
   grid-column: 1;
@@ -833,52 +838,40 @@ img {
   min-width: 0;
 }
 
-.site-footer .footer-logo-link {
-  display: block;
-  text-decoration: none;
-}
-
 .site-footer .footer-logo {
-  display: block;
-  width: 150px;
+  width: 160px;
   max-width: 100%;
   height: auto;
-  object-fit: contain;
-  margin: 0 0 35px;
+  display: block;
+  margin-bottom: 30px;
 }
-
-/* DOWNLOAD LINK */
 
 .site-footer .footer-download {
-  display: inline-block;
   color: #000000;
   font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
   text-decoration: underline;
-  text-underline-offset: 5px;
+  text-underline-offset: 4px;
 }
 
-/* RIGHT — FIVE HORIZONTAL COLUMNS */
+/* RIGHT SIDE — ALL FIVE SECTIONS */
 
 .site-footer .footer-navigation {
-  grid-column: 2 / -1;
+  grid-column: 2;
+
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  column-gap: 24px;
+  column-gap: 20px;
   align-items: start;
 }
 
-/* EACH GUIDELINE SECTION */
+/* SECTION HEADINGS */
 
 .site-footer .footer-group {
   min-width: 0;
 }
 
-/* SECTION HEADINGS */
-
 .site-footer .footer-group h3 {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   font-size: 12px;
   font-weight: 800;
   line-height: 1.4;
@@ -889,7 +882,7 @@ img {
   text-decoration: none;
 }
 
-/* SUBSECTION LINKS */
+/* SUBSECTIONS */
 
 .site-footer .footer-group ul {
   display: block;
@@ -899,30 +892,36 @@ img {
 }
 
 .site-footer .footer-group li {
-  margin: 0 0 12px;
+  margin-bottom: 12px;
 }
 
 .site-footer .footer-group li a {
   display: block;
   color: #000000;
   font-size: 11px;
-  font-weight: 400;
   line-height: 1.5;
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 
 .site-footer .footer-group a:hover,
 .site-footer .footer-download:hover {
   color: #FFFFFF;
 }
 
-/* TABLET */
+/* HIDE THREE-COLUMN GRID GUIDES IN FOOTER */
 
-@media (max-width: 900px) {
+.site-footer .grid-guides {
+  display: none;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 768px) {
   .site-footer .footer-grid {
+    width: calc(100% - 40px);
     grid-template-columns: 1fr;
     row-gap: 40px;
   }
@@ -933,25 +932,7 @@ img {
   }
 
   .site-footer .footer-navigation {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 30px;
-  }
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-  .site-footer .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .site-footer .footer-navigation {
-    grid-column: 1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
-  }
-
-  .site-footer .footer-logo {
-    width: 140px;
   }
 }
