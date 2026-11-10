@@ -26,31 +26,36 @@ main {
   padding: 48px 0;
 }
 
-/* Three-column grid */
+
+/* ULTIM8 — 4 COLUMN WIREFRAME GRID */
+
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: repeat(6, minmax(100px, auto));
-  gap: 16px;
+  gap: 0;
+  border-top: 1px solid #F26522;
+  border-left: 1px solid #F26522;
 }
 
-/* Temporary visible grid cells */
 .grid-cell {
-  border: 1px solid #F26522;
-  background: #fff1e8;
+  border-right: 1px solid #F26522;
+  border-bottom: 1px solid #F26522;
+  background: transparent;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: normal;
 }
 
-/* Tablet and mobile layout */
+/* Mobile layout */
 @media (max-width: 768px) {
   .brand-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: none;
   }
+}
 
   main {
     width: 90%;
