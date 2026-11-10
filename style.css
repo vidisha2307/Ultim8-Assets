@@ -503,3 +503,82 @@ a {
     background-attachment: scroll;
   }
 }
+
+/* ===================================
+   ULTIM8 HOMEPAGE — COVER UPDATE
+=================================== */
+
+/* Orange header */
+.site-header {
+  background-color: #F26522;
+  border-bottom: none;
+}
+
+/* White ULTIM8 logo */
+.header-logo {
+  color: #FFFFFF;
+}
+
+/* White hamburger lines */
+.menu-button span {
+  background-color: #FFFFFF;
+}
+
+/* Orange first section */
+.welcome-section {
+  background-color: #F26522;
+  color: #FFFFFF;
+  border-bottom: none;
+}
+
+/* Three-column headline */
+.welcome-grid {
+  min-height: calc(100vh - 86px);
+  padding-top: 60px;
+  padding-bottom: 80px;
+  align-content: center;
+}
+
+/* Oversized headline with tight leading */
+.welcome-heading {
+  grid-column: 1 / -1;
+  grid-row: auto;
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+
+  font-size: clamp(42px, 7.5vw, 130px);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/* Remove previous oversized background 8 */
+.welcome-symbol {
+  display: none;
+}
+
+/* White grid guides on orange */
+.welcome-section .grid-guides span {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .welcome-grid {
+    min-height: 70vh;
+    padding-block: 60px;
+  }
+
+  .welcome-heading {
+    font-size: clamp(32px, 8vw, 60px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+}
