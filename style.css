@@ -797,3 +797,133 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* =========================================
+   FOOTER — SIX-COLUMN SKETCH LAYOUT
+========================================= */
+
+.site-footer {
+  background-color: #F26522;
+  color: #000000;
+  padding: 70px 0 60px;
+  border: none;
+}
+
+/* Override the default 3-column grid
+   for the footer only */
+
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(5, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: start;
+}
+
+/* LEFT: STACKED LOGO AND DOWNLOAD LINK */
+
+.site-footer .footer-brand {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo-link {
+  display: block;
+  text-decoration: none;
+}
+
+.site-footer .footer-logo {
+  display: block;
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 0 35px;
+}
+
+.site-footer .footer-download {
+  display: inline-block;
+  color: #000000;
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* FIVE HORIZONTAL NAVIGATION COLUMNS */
+
+.site-footer .footer-navigation {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.site-footer .footer-group {
+  min-width: 0;
+}
+
+.site-footer .footer-group h3 {
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.site-footer .footer-group h3 a,
+.site-footer .footer-group li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.site-footer .footer-group ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer .footer-group li {
+  margin: 0 0 12px;
+}
+
+.site-footer .footer-group li a {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+
+.site-footer .footer-group a:hover,
+.site-footer .footer-download:hover {
+  color: #FFFFFF;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .site-footer .footer-brand,
+  .site-footer .footer-navigation {
+    grid-column: 1;
+  }
+
+  .site-footer .footer-navigation {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .site-footer .footer-navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+  }
+}
