@@ -202,3 +202,46 @@ body {
     row-gap: 20px;
   }
 }
+
+/* ULTIM8 — OPTIONAL GRID GUIDES */
+
+/* Show grid guides while designing */
+:root {
+  --show-grid: 1;
+  --grid-color: rgba(242, 101, 34, 0.4);
+}
+
+/* Main three-column layout */
+.content-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+/* Visible guide overlay */
+.content-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+
+  opacity: var(--show-grid);
+
+  background: linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(100% - 1px),
+    var(--grid-color) calc(100% - 1px)
+  );
+
+  background-size: calc((100% + 24px) / 3) 100%;
+}
+
+/* Hide guides on mobile */
+@media (max-width: 768px) {
+  .content-grid::before {
+    display: none;
+  }
+}
