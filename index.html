@@ -3,66 +3,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ULTIM8 | Brand Guidelines</title>
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="header-logo">
-        ULTIM8
+
+      <a href="index.html" class="header-logo"
+         aria-label="ULTIM8 homepage">
+        <img src="black%20logo.png"
+             alt="ULTIM8"
+             class="header-logo-image">
       </a>
 
       <button class="menu-button"
-              aria-label="Open menu"
+              id="menuButton"
+              type="button"
+              aria-label="Open navigation"
               aria-expanded="false"
-              aria-controls="site-menu">
+              aria-controls="navigationPanel">
         <span></span>
         <span></span>
         <span></span>
       </button>
+
     </div>
   </header>
 
-  <!-- HAMBURGER MENU -->
-  <nav id="site-menu"
-       class="site-menu"
-       aria-label="Main navigation"
-       hidden>
+  <!-- HAMBURGER NAVIGATION -->
+  <nav class="navigation-panel"
+       id="navigationPanel"
+       aria-label="Brand guidelines navigation">
+    <div class="navigation-grid"
+         id="menuNavigation"></div>
   </nav>
 
   <main>
 
-   <!-- SECTION 1: WELCOME -->
-<section class="welcome-section">
-  <div class="grid-shell welcome-grid">
+    <!-- SECTION 1: WELCOME -->
+    <section class="welcome-section">
+      <div class="grid-shell welcome-grid">
 
-    <!-- Visible grid guides -->
-    <div class="grid-guides" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+        <div class="grid-guides" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-    <h1 class="welcome-heading">
-      YOUR ULTIM8<br>
-      GUIDE TO GETTING<br>
-      IT RIGHT
-    </h1>
+        <h1 class="welcome-heading">
+          <span>YOUR ULTIM8</span>
+          <span>GUIDE TO GETTING</span>
+          <span>IT RIGHT</span>
+        </h1>
 
-  </div>
-</section>
+      </div>
+    </section>
 
-    <!-- SECTION 2: BRAND INTRODUCTION -->
+    <!-- SECTION 2: INTRODUCTION -->
     <section class="introduction-section">
       <div class="grid-shell introduction-grid">
+
         <div class="grid-guides" aria-hidden="true">
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
         <div class="intro-left">
@@ -82,18 +94,24 @@
             our story.
           </p>
         </div>
+
       </div>
     </section>
 
-    <!-- PATTERN DIVIDER WITH PARALLAX -->
+    <!-- PARALLAX PATTERN -->
     <div class="parallax-divider"
-         aria-hidden="true"></div>
+         role="img"
+         aria-label="ULTIM8 brand pattern">
+    </div>
 
     <!-- SECTION 3: TAGLINE -->
     <section class="tagline-section">
       <div class="grid-shell tagline-grid">
+
         <div class="grid-guides" aria-hidden="true">
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
 
         <h2 class="tagline-heading">
@@ -107,21 +125,17 @@
             to reducing decision overload through
             curated choices and guided shopping
             experiences. It emphasizes giving
-            customers more confidence, less
-            mental effort, and more time to
-            enjoy life.
+            customers more confidence, less mental
+            effort, and more time to enjoy life.
           </p>
         </div>
 
         <div class="tagline-visual">
-          <img
-            src="assets/tagline-image.jpg"
-            alt="ULTIM8 brand application"
-            onerror="this.style.display='none'">
-          <span class="image-placeholder">
-            ADD APPROVED IMAGE
-          </span>
+          <img src="Tagline.png"
+               alt="Less to Decide. More to Enjoy. ULTIM8 tagline artwork"
+               class="tagline-artwork">
         </div>
+
       </div>
     </section>
 
@@ -130,25 +144,31 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="grid-shell footer-grid">
+
       <div class="grid-guides" aria-hidden="true">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo">
-          ULTIM8
+        <a href="index.html">
+          <img src="black%20logo.png"
+               alt="ULTIM8"
+               class="footer-logo">
         </a>
 
-        <a href="assets/ultim8-assets.zip"
-           class="download-link"
-           download>
+        <a href="#"
+           class="footer-download"
+           id="downloadLink">
           Download our assets
         </a>
       </div>
 
-      <nav class="footer-navigation"
-           aria-label="Footer navigation">
-      </nav>
+      <div class="footer-navigation"
+           id="footerNavigation">
+      </div>
+
     </div>
   </footer>
 
