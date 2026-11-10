@@ -407,7 +407,8 @@ img {
 ========================================= */
 
 
-/* ORIGINAL PARALLAX EFFECT — ULTIM8 PATTERN */
+
+/* ULTIM8 ORIGINAL PATTERN — WHITE BACKGROUND */
 
 .parallax-divider {
   position: relative;
@@ -416,20 +417,23 @@ img {
   height: 195px;
   min-height: 195px;
 
+  /* Original pattern image */
   background-image: url("PATTERN.png");
-  background-color: #000000;
+
+  /* White background instead of black */
+  background-color: #FFFFFF;
 
   background-repeat: repeat;
   background-size: auto;
   background-position: center center;
 
-  /* Fixed background creates parallax */
+  /* Preserve parallax effect */
   background-attachment: fixed;
 
   overflow: hidden;
 }
 
-/* Mobile browser fallback */
+/* Mobile fallback */
 @media (max-width: 768px) {
   .parallax-divider {
     background-attachment: scroll;
