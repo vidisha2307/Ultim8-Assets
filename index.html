@@ -5,31 +5,201 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
-
   <title>ULTIM8 Brand Guidelines</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="logo" href="#home">ULTIM8</a>
+
+    <button class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="siteMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- NAVIGATION MENU -->
+  <nav class="site-menu" id="siteMenu"
+       aria-label="Main navigation" hidden>
+
+    <a href="#home">Home</a>
+
+    <details>
+      <summary>01 — Brand Overview</summary>
+      <a href="#about-us">About Us</a>
+      <a href="#why">Why</a>
+      <a href="#substance">Substance</a>
+      <a href="#products-services">Products & Services</a>
+      <a href="#positioning">Positioning</a>
+      <a href="#personality">Personality</a>
+      <a href="#voice">Voice</a>
+    </details>
+
+    <details>
+      <summary>02 — Primary Visual Identity</summary>
+      <a href="#primary-logo">Primary Logo</a>
+      <a href="#dos-donts">Do's & Don'ts</a>
+      <a href="#logo-mark">Logo Mark</a>
+      <a href="#variations">Variations</a>
+      <a href="#typography">Typography</a>
+      <a href="#color">Color</a>
+    </details>
+
+    <details>
+      <summary>03 — Secondary Visual Identity</summary>
+      <a href="#pattern">Pattern</a>
+      <a href="#icons-graphics">Icons & Graphics</a>
+      <a href="#layout-grid">Layout & Grid System</a>
+      <a href="#image-usage">Image Usage Direction</a>
+      <a href="#asset-application">Asset Application</a>
+    </details>
+
+    <details>
+      <summary>04 — Experiential Guide</summary>
+      <a href="#different-media">Different Media</a>
+      <a href="#identity-expansion">Identity Expansion</a>
+      <a href="#sensory-application">Sensory Application</a>
+      <a href="#visual-application">Visual Application</a>
+    </details>
+
+    <details>
+      <summary>05 — AI Prompt</summary>
+      <a href="#ai-tools">AI Tools & Usage</a>
+      <a href="#design-prompts">Design Prompts</a>
+      <a href="#visual-language">Visual Language</a>
+      <a href="#terminology">Terminology</a>
+      <a href="#ai-checklist">AI Checklist</a>
+    </details>
+  </nav>
+
   <main>
-    <section class="cover brand-grid">
-
-      <div class="cover-label">
-        ULTIM8
+    <!-- HOMEPAGE -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>WELCOME TO ULTIM8 GUIDELINES.</h1>
       </div>
-
-      <div class="cover-description">
-        BRAND GUIDELINES
-      </div>
-
-      <h1 class="cover-title">
-        YOUR GUIDE TO
-        GETTING IT RIGHT.
-      </h1>
-
     </section>
+
+    <!-- MAIN GUIDELINE SECTIONS -->
+    <div id="guidelines"></div>
   </main>
 
+  <script>
+    const sections = [
+      {
+        title: "Brand Overview",
+        topics: [
+          ["about-us", "About Us"],
+          ["why", "Why"],
+          ["substance", "Substance: Vision, Mission, Value & Purpose"],
+          ["products-services", "Products & Services"],
+          ["positioning", "Positioning"],
+          ["personality", "Personality"],
+          ["voice", "Voice"]
+        ]
+      },
+      {
+        title: "Primary Visual Identity",
+        topics: [
+          ["primary-logo", "Primary Logo"],
+          ["dos-donts", "Do's & Don'ts"],
+          ["logo-mark", "Logo Mark"],
+          ["variations", "Variations"],
+          ["typography", "Typography"],
+          ["color", "Color"]
+        ]
+      },
+      {
+        title: "Secondary Visual Identity",
+        topics: [
+          ["pattern", "Pattern"],
+          ["icons-graphics", "Icons & Graphics"],
+          ["layout-grid", "Layout & Grid System"],
+          ["image-usage", "Image Usage Direction"],
+          ["asset-application", "Asset Application"]
+        ]
+      },
+      {
+        title: "Experiential Guide",
+        topics: [
+          ["different-media", "Different Media"],
+          ["identity-expansion", "Identity Expansion"],
+          ["sensory-application", "Sensory Application"],
+          ["visual-application", "Visual Application"]
+        ]
+      },
+      {
+        title: "AI Prompt",
+        topics: [
+          ["ai-tools", "AI Tools & Usage"],
+          ["design-prompts", "Design Prompts"],
+          ["visual-language", "Visual Language"],
+          ["terminology", "Terminology"],
+          ["ai-checklist", "AI Checklist"]
+        ]
+      }
+    ];
+
+    const container = document.getElementById("guidelines");
+
+    sections.forEach((section, index) => {
+      const group = document.createElement("section");
+      group.className = "guideline-group";
+
+      const heading = document.createElement("h2");
+      heading.className = "group-heading";
+      heading.textContent =
+        String(index + 1).padStart(2, "0") +
+        " — " + section.title;
+
+      group.appendChild(heading);
+
+      section.topics.forEach(([id, title]) => {
+        const topic = document.createElement("article");
+        topic.className = "topic content-grid";
+        topic.id = id;
+
+        const h3 = document.createElement("h3");
+        h3.textContent = title;
+
+        const content = document.createElement("div");
+        content.className = "topic-content";
+
+        topic.appendChild(h3);
+        topic.appendChild(content);
+        group.appendChild(topic);
+      });
+
+      container.appendChild(group);
+    });
+
+    const menuButton = document.getElementById("menuButton");
+    const siteMenu = document.getElementById("siteMenu");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = !siteMenu.hidden;
+      siteMenu.hidden = isOpen;
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Open navigation" : "Close navigation"
+      );
+    });
+
+    siteMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        siteMenu.hidden = true;
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      });
+    });
+  </script>
 </body>
 </html>
