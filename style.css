@@ -477,7 +477,7 @@ img {
 /* TAGLINE IMAGE SPACE */
 
 .tagline-visual {
-  grid-column: 3/ 4;
+  grid-column: 4/ 4;
 
   display: flex;
   justify-content: center;
