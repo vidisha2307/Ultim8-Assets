@@ -86,7 +86,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--orange);
+  background: var(--white);
 }
 
 .header-inner {
@@ -101,8 +101,8 @@ a {
 }
 
 .header-logo {
-  color: var(--white);
-  font-size: 30px;
+  color: var(--orange);
+  font-size: 32px;
   font-weight: 800;
   text-decoration: none;
 }
@@ -125,7 +125,7 @@ a {
   display: block;
   width: 30px;
   height: 2px;
-  background: var(--white);
+  background: var(--orange);
 }
 
 /* ===================================
@@ -190,7 +190,7 @@ a {
   font-size: clamp(42px, 5.5vw, 90px);
   font-weight: 700;
   line-height: 1.12;
-  letter-spacing: -0.035em;
+  letter-spacing: 0.035em;
 }
 
 .welcome-heading span {
@@ -231,7 +231,7 @@ a {
 =================================== */
 
 .parallax-divider {
-  height: 65px;
+  height: 150px;
 
   background-color: #F9C3A8;
 
