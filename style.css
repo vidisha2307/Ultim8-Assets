@@ -96,6 +96,9 @@ img {
 
 /* FLOATING ROUNDED HEADER */
 
+
+/* FLOATING HEADER OVER ORANGE BACKGROUND */
+
 .site-header {
   position: sticky;
   top: 16px;
@@ -111,6 +114,19 @@ img {
 
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
+
+/* SECTION 1 EXTENDS BEHIND HEADER */
+
+.welcome-section {
+  position: relative;
+  margin-top: -92px;
+  padding-top: 92px;
+
+  background-color: #F26522;
+  color: #FFFFFF;
+  overflow: hidden;
+}
+
 
 .header-inner {
   width: calc(100% - 2 * var(--page-margin));
